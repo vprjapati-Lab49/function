@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><checkstyle version="4.3"><file name="/home/vinay/Documents/funtion/funtion-gui/src/reducers/index.ts"><error line="11" column="30" severity="error" message="Missing semicolon" source="failure.tslint.semicolon" /></file></checkstyle>

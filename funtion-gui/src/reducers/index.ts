@@ -7,11 +7,11 @@ interface StoreEnhancerState {
 }
 
 export interface RootState extends StoreEnhancerState {
-    router: RouterState;
-    dashboard: DashboardState
+  router: RouterState;
+  dashboard: DashboardState;
 }
 
 export default combineReducers({
-    router,
-    dashboard,
+  router,
+  dashboard
 });

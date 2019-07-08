@@ -19,12 +19,14 @@
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
-    "target",
-    "node_modules",
+    "node_modules/**/*",
     "dist",
     "config",
     "postcss.config.js",
     "src/setupTests.ts",
     "**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*"
   ]
 }

@@ -8,14 +8,6 @@ export const routes = (() => {
   };
 })();
 
-export const labels = {
-  titles: {
-    notifications: {
-      HEADER: 'notifications'
-    }
-  }
-};
-
 export const messages = {
   indicators: {
     agGrid: {
@@ -46,35 +38,3 @@ export const constants = {
     UNPROCESSABLE_ENTITY: 422
   }
 };
-
-export const filterDefaultValues = {
-  ALL_MANAGERS: 'All Managers',
-  ALL_LOCATIONS: 'All Locations',
-  ALL_RESOURCES: 'All Resources',
-  ALL_PRACTICES: 'All Practices'
-};
-
-export const csvDownloadParams = {
-  allColumns: true
-};
-
-export const dateFormats = {
-  MM_DD_YYYY: 'MM.DD.YYYY',
-  FILE_DATE_FORMAT: 'YYYY-MM-DD'
-};
-
-export const EMPTY_STRING = '';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-export const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-export const START_DATE = 'startDate';
-export const END_DATE = 'endDate';

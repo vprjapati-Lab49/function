@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+}
+
+.flexRow {
+  @extend .flex;
+  flex-direction: row;
+}
+
+.flexColumn {
+  @extend .flex;
+  flex-direction: row;
+}

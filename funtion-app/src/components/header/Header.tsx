@@ -7,7 +7,7 @@ import './Header.scss';
 
 function Header() {
   return (
-      <AppBar position="fixed">
+      <AppBar position="fixed" className="header">
         <Toolbar>
           <IconButton
             edge="start"

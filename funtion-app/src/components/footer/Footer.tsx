@@ -1,14 +1,17 @@
 import React from 'react';
-import { AppBar } from '@material-ui/core';
 
 import './Footer.scss';
 
 function Footer() {
 
-
   return (
     <div className="footerBar">
-      sfsffd
+      <div>
+        &copy; Copyright 2019, Lab49
+      </div>
+      <div>
+        Terms & Conditions
+      </div>
     </div>
   );
 }

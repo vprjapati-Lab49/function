@@ -8,7 +8,7 @@ import './Main.scss';
 
 function Main() {
   return (
-    <Box component={"div"}>
+    <Box component={"div"} className="main">
       <Header/>
       <TaskDashboard/>
       <Footer/>

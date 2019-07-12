@@ -1,9 +1,21 @@
 @import "../../commons/styles/Flex";
+@import "../../commons/styles/fonts";
+@import "../../commons/styles/colors";
+
 
 .footerBar {
+  @extend .flexRow;
   bottom: 0;
-  height: 2.5rem;
+  height: 2rem;
   width: 100%;
-  background-color: #2980B9;
+  background-color: $blue-dark;
+  color: $white;
   top: auto;
+  position: fixed;
+  align-items: center;
+  align-content: space-around;
+  justify-content: space-between;
+  padding: 0 0rem 0 .5rem;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
 }

@@ -43,7 +43,7 @@ const render = (Component: React.ReactType) => {
 render(App);
 
 if (module.hot) {
-    module.hot.accept('./TaskDashboard.tsxsx', () => {
+    module.hot.accept('./TaskList.tsxsx', () => {
         const NextRoot = require('./App.tsx').default;
         render(NextRoot);
     });

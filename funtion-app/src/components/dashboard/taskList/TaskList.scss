@@ -1,0 +1,22 @@
+@import "../../../commons/styles/Flex";
+@import "../../../commons/styles/fonts";
+
+.taskTable {
+  @extend .flexColumn;
+  width: 40rem;
+  margin-left: calc(30% - 1rem);
+}
+
+.inputBoxNewTask {
+  width: 10rem;
+}
+
+.taskRow {
+  font-size: 1rem;
+  font-weight: $font-weight-bold;
+}
+
+.taskDetails {
+  font-size: .8rem;
+  font-weight: $font-weight-regular;
+}

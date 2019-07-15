@@ -8,7 +8,6 @@ import { Priority } from '../types/mapping';
 function TaskDashboard() {
   const [value, setValue] = useState(0);
 
-
   return (
     <Box className="dashboardBody" component={"div"}>
       <BottomNavigation

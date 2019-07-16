@@ -1,6 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+//-----------------
+
+const backendServer = 'http://localhost:3000';
+
 module.exports = {
     entry: './src/Index.tsx',
     output: {
@@ -9,6 +13,17 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
+    },
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: 9000,
+        proxy: {
+            '/api': {
+                target: backendServer,
+                secure: false
+            }
+        }
     },
     module: {
         rules: [
@@ -19,9 +34,9 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader", // creates style nodes from JS strings
-                    "css-loader", // translates CSS into CommonJS
-                    "sass-loader" // compiles Sass to CSS, using Node Sass by default
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
                 ]
             },
             {

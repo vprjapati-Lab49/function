@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Paper, TextField, GridList, GridListTile } from '@material-ui/core';
 
 import './TaskList.scss';
 import { Task } from '../../types/mapping';
+import { restGet } from '../../../commons/utils/RestRequests';
+import { BACKEND_URLS } from '../../../commons/constants';
 
-const TaskList = (props) => {
-  const { taskList } = props;
+const TaskList = () => {
+  const [taskList, setTaskList] = useState([]);
+
+  useEffect(() => {
+    restGet(BACKEND_URLS.getTasks)
+      .then((response) => {
+        setTaskList(response.data.data);
+      })
+  }, []);
 
   return (
     <Box className="taskTable" component={"div"}>
@@ -21,26 +30,35 @@ const TaskList = (props) => {
           shrink: true,
         }}
       />
-      {taskList && taskList.map((task, index) => {
-        return (
-          <GridList cellHeight={160} cols={1}>
-            {createRow(task, index)}
-          </GridList>
-        )
-      })}
+      {createTaskGrid(taskList)}
     </Box>
   );
 }
 
-const createRow = (task: Task, index: number) => {
+const createTaskGrid = (tasks: Array<Task>) => {
   return (
-    <GridListTile key={index} cols={1} className="taskRow">
+    <div>
+      {tasks && tasks.map((task, index) => {
+        return (
+          <GridList key={index} cellHeight={160} cols={1}>
+            {createRow(task)}
+          </GridList>
+        )
+      })}
+    </div>
+  )
+}
+
+const createRow = (task: Task) => {
+  return (
+    <GridListTile cols={1} className="taskRow">
       <div>{task.title}</div>
       <div className={"taskDetails"}>
         {task.description}
         <span>{task.priority.toString()}</span>
-        <span>{task.date.toDateString()}</span>
+        <span>{task.date}</span>
       </div>
+      {createTaskGrid(task.subtasks)}
     </GridListTile>
   )
 }

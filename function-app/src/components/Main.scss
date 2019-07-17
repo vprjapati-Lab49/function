@@ -4,22 +4,6 @@
   @extend .flex
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  pointer-events: painted;
-  height: 2.4rem;
-  width: 2.4rem;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .main {
   @extend .flexColumn;
 }

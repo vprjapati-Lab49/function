@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import Header from './header/Header';
+import Header from './layout/header/Header';
 import TaskDashboard from './dashboard/TaskDashboard';
-import Footer from './footer/Footer';
+import Footer from './layout/footer/Footer';
 import './Main.scss';
 
 const Main = () => {

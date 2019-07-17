@@ -1,5 +1,6 @@
 import React from 'react';
 import { Divider, Drawer, Icon, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import Logo from '../logo/Logo';
 
 const CustomDrawer = (props) => {
   const { open, toggleDrawer } = props;
@@ -9,7 +10,9 @@ const CustomDrawer = (props) => {
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
+      className="drawerBody"
     >
+      <Logo/>
       <Divider/>
       <List>
         <ListItem button>
@@ -28,5 +31,4 @@ const CustomDrawer = (props) => {
     </Drawer>
   )
 };
-
 export default CustomDrawer;

@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, GridList, GridListTile, TextField } from '@material-ui/core';
+import {
+  Box,
+  Checkbox,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  FormControlLabel,
+  Icon,
+  TextField,
+  Typography
+} from '@material-ui/core';
 
 import './TaskList.scss';
 import { Task } from '../../types/mapping';
@@ -30,41 +39,53 @@ const TaskList = () => {
           shrink: true,
         }}
       />
-      {createTaskGrid(taskList)}
+      {createTaskRows(taskList)}
     </Box>
   );
 }
 
-const createTaskGrid = (tasks: Array<Task>) => {
+const createTaskRows = (tasks: Array<Task>) => {
   return (
     <div>
       {tasks && tasks.map((task, index) => {
-        return (
-          <GridList key={index} cellHeight={160} cols={1}>
-            {createRow(task)}
-          </GridList>
-        )
+        return createTaskRow(task, index)
       })}
     </div>
   )
 }
 
-const createRow = (task: Task) => {
+const createTaskRow = (task: Task, index) => {
   return (
-    <Card>
-      <CardContent>
-        <GridListTile cols={3}>
-          <div className="title">{task.title}</div>
-          <div className={"taskDetails"}>
-            <span>{task.priority.toString()}</span>
-          </div>
-          <div className={"taskDetails"}>
-            <span>{task.date}</span>
-          </div>
-          {createTaskGrid(task.subtasks)}
-        </GridListTile>
-      </CardContent>
-    </Card>
+    <div key={index}>
+      {task.subtasks && task.subtasks.length > 0 ?
+        <ExpansionPanel expanded={true}>
+          <ExpansionPanelSummary
+            expandIcon={<Icon>expand_less</Icon>}
+            aria-controls="panel1bh-content"
+            id="panel1bh-header"
+          >
+            {getCard(task)}
+          </ExpansionPanelSummary>
+        </ExpansionPanel>
+        : getCard(task)
+      }
+    </div>
+  )
+}
+
+const getCard = (task) => {
+  return (
+    <div>
+      <FormControlLabel
+        value="top"
+        control={<Checkbox color="secondary"/>}
+        label={<Typography>{task.title}</Typography>}
+        labelPlacement="end"
+      />
+      <Typography>{task.priority.toString()}</Typography>
+      <Typography>{task.date}</Typography>
+      {createTaskRows(task.subtasks)}
+    </div>
   )
 }
 

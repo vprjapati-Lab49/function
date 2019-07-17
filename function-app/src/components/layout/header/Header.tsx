@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { AppBar, Icon, IconButton, Toolbar } from '@material-ui/core';
 
-import logo from '../../assets/logo.png';
 import Drawer from '../drawer/CustomDrawer';
 import './Header.scss';
-import { INPUT_KEYS } from '../../commons/utils/keycodes';
+import { INPUT_KEYS } from '../../../commons/utils/keycodes';
+import Logo from '../logo/Logo';
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -33,8 +33,7 @@ const Header = () => {
           color="inherit"
           aria-label="Open drawer"
         >
-          <img src={logo} className="App-logo" alt="logo"/>
-          Function
+         <Logo/>
         </IconButton>
       </Toolbar>
       <Drawer open={drawerOpen} toggleDrawer={toggleDrawer}/>

@@ -6,7 +6,7 @@ import Drawer from '../drawer/CustomDrawer';
 import './Header.scss';
 import { INPUT_KEYS } from '../../commons/utils/keycodes';
 
-function Header() {
+const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open) => event => {

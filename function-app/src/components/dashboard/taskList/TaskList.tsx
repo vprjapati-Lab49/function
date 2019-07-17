@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Paper, TextField, GridList, GridListTile } from '@material-ui/core';
+import { Box, Card, CardContent, GridList, GridListTile, TextField } from '@material-ui/core';
 
 import './TaskList.scss';
 import { Task } from '../../types/mapping';
@@ -51,15 +51,20 @@ const createTaskGrid = (tasks: Array<Task>) => {
 
 const createRow = (task: Task) => {
   return (
-    <GridListTile cols={1} className="taskRow">
-      <div>{task.title}</div>
-      <div className={"taskDetails"}>
-        {task.description}
-        <span>{task.priority.toString()}</span>
-        <span>{task.date}</span>
-      </div>
-      {createTaskGrid(task.subtasks)}
-    </GridListTile>
+    <Card>
+      <CardContent>
+        <GridListTile cols={3}>
+          <div className="title">{task.title}</div>
+          <div className={"taskDetails"}>
+            <span>{task.priority.toString()}</span>
+          </div>
+          <div className={"taskDetails"}>
+            <span>{task.date}</span>
+          </div>
+          {createTaskGrid(task.subtasks)}
+        </GridListTile>
+      </CardContent>
+    </Card>
   )
 }
 

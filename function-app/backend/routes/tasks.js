@@ -1,8 +1,8 @@
-const tasks = require('../schema/tasks');
+const Task = require('../schema/tasks');
 
 module.exports = (router) => {
     router.get('/tasks', (req, res) => {
-        tasks.find((err, data) => {
+        Task.find((err, data) => {
             if (err) {
                 return res.json({success: false, error: err});
             } else {
@@ -12,30 +12,27 @@ module.exports = (router) => {
     });
 
     router.post('/tasks', (req, res) => {
-        let data = new tasks();
-        const {message} = req.body;
-
-        data.message = message;
-        data.id = id;
-        data.save((err) => {
-            if (err) {
+        let data = new Task(req.body);
+        data.save()
+            .then(item => {
+                return res.json({success: true, data: item});
+            })
+            .catch(err => {
                 return res.json({success: false, error: err});
-            } else {
-                return res.json({success: true});
-            }
-        });
+            });
     });
 
     router.put('/tasks', (req, res) => {
         const {id, update} = req.body;
-        tasks.findByIdAndUpdate(id, update, (err) => {
+        Task.findByIdAndUpdate(id, update, (err) => {
             if (err) return res.json({success: false, error: err});
             return res.json({success: true});
         });
     });
+
     router.delete('/tasks', (req, res) => {
         const {id} = req.body;
-        tasks.findByIdAndRemove(id, (err) => {
+        Task.findByIdAndRemove(id, (err) => {
             if (err) return res.send(err);
             return res.json({success: true});
         });

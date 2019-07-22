@@ -6,8 +6,6 @@ const logger = require('morgan');
 const database = require('./config/db/mongo');
 const {server} = require('./config/dev');
 const setupRoutes = require('./routes/index');
-const tasks = require('./routes/tasks');
-
 //----------import separator----------
 
 const expressApp = express();

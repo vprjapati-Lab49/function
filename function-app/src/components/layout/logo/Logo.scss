@@ -17,3 +17,8 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  @extend .flexRow;
+  align-items: center;
+}

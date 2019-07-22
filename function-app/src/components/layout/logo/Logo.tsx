@@ -5,8 +5,9 @@ import './Logo.scss';
 
 const Logo = () => {
   return (
-    <span>
-          <img src={logo} className="App-logo" alt="logo"/>Function
+    <span className="logo">
+          <img src={logo} className="App-logo" alt="logo"/>
+          <span>Function</span>
     </span>
   );
 }

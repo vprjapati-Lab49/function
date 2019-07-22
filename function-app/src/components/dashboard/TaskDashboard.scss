@@ -6,4 +6,7 @@
   padding-top: 5rem;
 }
 
-
+.taskDashboardBody{
+ @extend .flexColumn;
+ margin-left: calc(30% - 1rem);
+}

@@ -4,11 +4,6 @@
 .taskTable {
   @extend .flexColumn;
   width: 40rem;
-  margin-left: calc(30% - 1rem);
-}
-
-.inputBoxNewTask {
-  width: 10rem;
 }
 
 .title {

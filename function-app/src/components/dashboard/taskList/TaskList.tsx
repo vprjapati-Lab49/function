@@ -6,40 +6,19 @@ import {
   ExpansionPanelSummary,
   FormControlLabel,
   Icon,
-  TextField,
   Typography
 } from '@material-ui/core';
 
 import './TaskList.scss';
 import { Task } from '../../types/mapping';
-import { restGet } from '../../../commons/utils/RestRequests';
-import { BACKEND_URLS } from '../../../commons/constants';
 
-const TaskList = () => {
-  const [taskList, setTaskList] = useState([]);
+const TaskList = (props) => {
 
-  useEffect(() => {
-    restGet(BACKEND_URLS.getTasks)
-      .then((response) => {
-        setTaskList(response.data.data);
-      })
-  }, []);
+  const {tasks} = props;
 
   return (
     <Box className="taskTable" component={"div"}>
-      <TextField
-        className="inputBoxNewTask"
-        label="Add new Task"
-        style={{ margin: 8 }}
-        placeholder="Please add task details..."
-        fullWidth
-        margin="normal"
-        variant="filled"
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-      {createTaskRows(taskList)}
+      {createTaskRows(tasks)}
     </Box>
   );
 }

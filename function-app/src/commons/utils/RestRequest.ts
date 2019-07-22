@@ -1,7 +1,11 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 export const restGet = (url: string, config?: AxiosRequestConfig) => {
- return restRequest(url, { method: 'GET' })
+  return restRequest(url, { method: 'GET' })
+}
+
+export const restPost = (url: string, data, config?: AxiosRequestConfig) => {
+  return restRequest(url, { ...config, data, method: 'POST' })
 }
 
 export const restRequest = (url, requestOptions) => {
@@ -15,6 +19,5 @@ export const restRequest = (url, requestOptions) => {
     }
   }
 
-  console.info(JSON.stringify(config))
   return axios.request(config);
 }

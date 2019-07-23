@@ -1,0 +1,39 @@
+@import "../../commons/styles/colors";
+@import "../../commons/styles/fonts";
+
+.loginDiv {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  position: absolute;
+
+}
+
+.credDiv {
+  border: 1.5px dotted $lightGray-light;
+  border-radius: .3rem;
+  padding: 2rem;
+  max-width: 33rem;
+}
+
+.loginDivGoogle {
+  margin-top: 3rem;
+}
+
+.title {
+  font-weight: $font-weight-bold;
+  font-size: 2rem;
+  color: $light-coral;
+  text-align: center;
+}
+
+.loginButton {
+  height: 2.7rem;
+  width: 7.5rem;
+  color: $slate-primary;
+}
+
+.inputBoxNewTask {
+  max-width: 33rem;
+}

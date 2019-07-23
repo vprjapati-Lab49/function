@@ -14,3 +14,13 @@ export type Task = {
   currentStatus: TaskStatus;
   subtasks: Array<Task>
 }
+
+export type UserProfile = {
+  googleId:string;
+  imageUrl:string;
+  email: string;
+  name:string;
+  firstName:string;
+  lastName:string;
+
+}

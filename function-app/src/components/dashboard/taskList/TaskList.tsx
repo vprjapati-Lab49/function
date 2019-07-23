@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Box,
   Checkbox,
@@ -14,7 +14,7 @@ import { Task } from '../../types/mapping';
 
 const TaskList = (props) => {
 
-  const {tasks} = props;
+  const { tasks} = props;
 
   return (
     <Box className="taskTable" component={"div"}>

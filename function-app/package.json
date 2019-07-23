@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "webpack-dev-server --mode development --open --hot",
+    "dev": "HTTPS=true webpack-dev-server --mode development --https --open --hot --watch-poll --disable-host-check\n",
     "prod": "webpack --mode production"
   },
   "eslintConfig": {
@@ -21,6 +21,8 @@
     "date-fns": "^1.30.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.0.4",
     "react-scripts": "3.0.1",
     "webpack-dev-server": "^3.7.2"
   },

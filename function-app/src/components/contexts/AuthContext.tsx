@@ -1,6 +1,7 @@
 import React from 'react';
+import { UserProfile } from 'components/types/mapping';
 
-const AuthContext = React.createContext({
+const AuthContext = React.createContext<Partial<{ principal: UserProfile, isAuthorized: boolean }>>({
   principal: {},
   isAuthorized: false
 });

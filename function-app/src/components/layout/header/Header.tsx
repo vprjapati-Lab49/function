@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   AppBar,
   Avatar,
   Badge,
   Button,
+  Divider,
   Icon,
   IconButton,
   ListItemIcon,
@@ -17,11 +18,12 @@ import Drawer from '../drawer/CustomDrawer';
 import './Header.scss';
 import { INPUT_KEYS } from '../../utils/keycodes';
 import Logo from '../logo/Logo';
+import AuthContext from '../../contexts/AuthContext';
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
+  const authContext = useContext(AuthContext)
   const toggleDrawer = (open) => event => {
     if (event.type === 'keydown' && (event.key === INPUT_KEYS.TAB || event.key === INPUT_KEYS.SHIFT)) {
       return;
@@ -75,7 +77,7 @@ const Header = () => {
           </IconButton>
           <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
             <Avatar alt="Remy Sharp"
-                    src="https://lh5.googleusercontent.com/-az99t8E0pxg/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rfvPfYjLwPMTqxc27uc2tZidUn82w/s96-c/photo.jpg"/>
+                    src={authContext.principal.imageUrl}/>
           </Button>
           <Menu
             anchorEl={anchorEl}
@@ -83,6 +85,15 @@ const Header = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+            <MenuItem>
+              <ListItemIcon>
+                <Avatar alt="Remy Sharp"
+                        src={authContext.principal.imageUrl}/>
+              </ListItemIcon>
+              {authContext.principal.name}
+              <Divider/>
+            </MenuItem>
+
             <MenuItem onClick={handleClose}>
               <ListItemIcon>
                 <Icon>settings</Icon>

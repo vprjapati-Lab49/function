@@ -4,26 +4,42 @@ import { Button, Grid, TextField } from '@material-ui/core';
 
 import { UserProfile } from '../types/mapping';
 import './Login.scss';
-import { restPost } from '../utils/RestRequest';
-import { BACKEND_URLS } from '../commons/constants';
+import { restGet, restPost } from '../utils/RestRequest';
+import { AUTH_COOKIES, BACKEND_URLS } from '../commons/constants';
+import { setAuthCookies } from '../utils/cookies';
 
 const Login = (props) => {
-  const { setIsAuthorized } = props
+  const { setIsAuthorized, setPrincipal } = props;
 
-  const saveUserDetails = (profile: UserProfile) => {
-    restPost(BACKEND_URLS.users, profile)
-      .then((response) => {
+  const saveOrFetchDetails = (profile: UserProfile) => {
+
+    restGet(`${BACKEND_URLS.users.getByGoogleId}/${profile.googleId}`)
+      .then(({ data }) => {
+        if (data.data) {
+          setPrincipal(data.data)
+        } else {
+          restPost(BACKEND_URLS.users.baseUrl, profile)
+            .then(({ data }) => {
+              setPrincipal(data.data);
+            })
+            .catch(err => {
+              console.error(`Error while trying to save user details for email ${profile.email}. Error : ${err}`)
+            });
+        }
         setIsAuthorized(true);
       })
       .catch(err => {
-        console.error(`Error while trying to save user details for email ${profile.email}. Error : ${err}`)
+        console.error(`Error while trying to fetch user details for email ${profile.email}. Error : ${err}`)
       });
-
   }
+
   const responseGoogle = (response) => {
     setIsAuthorized(true)
-    saveUserDetails(response.profileObj)
-    console.log(JSON.stringify(response));
+    saveOrFetchDetails(response.profileObj);
+    setAuthCookies({
+      token: response.tokenObj.access_token,
+      [AUTH_COOKIES.EXPIRES_IN]: response.tokenObj.expires_in
+    }, response.googleId);
   }
 
   const failureGoogle = (response) => {
@@ -34,7 +50,7 @@ const Login = (props) => {
     <div className="loginDiv">
       <div className="credDiv">
         <Grid container spacing={3}>
-          <Grid item xs={12} className="title">
+          <Grid item xs={12} className="appTitle">
             Function
           </Grid>
           <Grid item xs={12}>

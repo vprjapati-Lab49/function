@@ -15,12 +15,16 @@ export type Task = {
   subtasks: Array<Task>
 }
 
-export type UserProfile = {
-  googleId:string;
-  imageUrl:string;
-  email: string;
-  name:string;
-  firstName:string;
-  lastName:string;
+export interface UserProfile {
+  googleId?: string;
+  imageUrl?: string;
+  email?: string;
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+}
 
+export type Credential = {
+  accessToken: string;
+  googleId: string;
 }

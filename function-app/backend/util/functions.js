@@ -9,3 +9,7 @@ exports.createResponse = (err, data) => {
 exports.createSuccessResponse = (data) => {
     return {success: true, data: data};
 }
+
+exports.createFailureResponse = (err) => {
+    return {success: false, error: err};
+}

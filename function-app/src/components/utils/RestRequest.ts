@@ -7,6 +7,9 @@ export const restGet = (url: string, config?: AxiosRequestConfig) => {
 export const restPost = (url: string, data, config?: AxiosRequestConfig) => {
   return restRequest(url, { ...config, data, method: 'POST' })
 }
+export const restPut = (url: string, data, config?: AxiosRequestConfig) => {
+  return restRequest(url, { ...config, data, method: 'PUT' })
+}
 
 export const restRequest = (url, requestOptions) => {
   const config = {

@@ -3,9 +3,9 @@ import { TextField } from '@material-ui/core';
 
 import './NewTaskRow.scss';
 import { Priority, Task, TaskStatus } from '../../types/mapping';
-import { KEY_CODES } from '../../../commons/utils/keycodes';
-import { restPost } from '../../../commons/utils/RestRequest';
-import { BACKEND_URLS } from '../../../commons/constants';
+import { KEY_CODES } from '../../utils/keycodes';
+import { restPost } from '../../utils/RestRequest';
+import { BACKEND_URLS } from '../../commons/constants';
 
 const NewTaskRow = (props) => {
   const taskInputElementRef = React.useRef(null);

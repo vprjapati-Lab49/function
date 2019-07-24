@@ -4,8 +4,8 @@ import { Button, Grid, TextField } from '@material-ui/core';
 
 import { UserProfile } from '../types/mapping';
 import './Login.scss';
-import { restPost } from '../../commons/utils/RestRequest';
-import { BACKEND_URLS } from '../../commons/constants';
+import { restPost } from '../utils/RestRequest';
+import { BACKEND_URLS } from '../commons/constants';
 
 const Login = (props) => {
   const { setIsAuthorized } = props
@@ -23,6 +23,10 @@ const Login = (props) => {
   const responseGoogle = (response) => {
     setIsAuthorized(true)
     saveUserDetails(response.profileObj)
+    console.log(JSON.stringify(response));
+  }
+
+  const failureGoogle = (response) => {
     console.log(JSON.stringify(response));
   }
 
@@ -63,7 +67,7 @@ const Login = (props) => {
           clientId="416356827270-i8utigasis1jtu3h06c2438bomo345o6.apps.googleusercontent.com" //secret - LejDwrTXI3wvXwosDaSx4vKA
           buttonText="LOGIN WITH GOOGLE"
           onSuccess={responseGoogle}
-          onFailure={responseGoogle}
+          onFailure={failureGoogle}
         />
       </div>
     </div>

@@ -3,8 +3,8 @@ import { BottomNavigation, BottomNavigationAction, Box, Icon } from '@material-u
 
 import './TaskDashboard.scss';
 import TaskList from './taskList/TaskList';
-import { restGet } from '../../commons/utils/RestRequest';
-import { BACKEND_URLS } from '../../commons/constants';
+import { restGet } from '../utils/RestRequest';
+import { BACKEND_URLS } from '../commons/constants';
 import NewTaskRow from '../dashboard/newTaskRow/NewTaskRow';
 
 function TaskDashboard() {
